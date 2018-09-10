@@ -1,0 +1,8 @@
+<h1>
+  Hello
+  <%= @user.first_name %> <%= @user.last_name %>
+</h1>
+<p>
+  Accéder à ses mémos:
+</p>
+<%= link_to "answer", user_answers_path(@user) %>
