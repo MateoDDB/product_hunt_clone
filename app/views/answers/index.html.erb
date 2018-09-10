@@ -1,27 +1,39 @@
-
 <h1>IA Mateo</h1>
-<p>Création part Mateo Ceron Arana</p>
+<h2>Création part Mateo Ceron Arana</h2>
+<h4>
+  Posez vos questions
+</h4>
+
+<% @answers.each do |answer| %>
+  <p>
+    <%= answer.name %>
+  </p>
+  <p>
+    <%= answer.text_content %>
+    (<%= answer.created_at.strftime("%d/%m/%Y") %>)
+  </p>
+  <div class="test">
+    <p>Hello world</p>
+  </div>
+<% end %>
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 <script>
 if (annyang) {
-  // Let's define a command.
-  var commandsOne = {
-    'Bonjour': function() { alert('Bonjour Mateo'); }
-  };
-
-  var commandsTwo = {
-    'Enregistre': function( {
-
-    };)
-  }
+    annyang.addCallback('result', function(phrases) {
+    const a = ("test1: ", phrases[0]);
+    const b = ("test2: ", phrases);
+    const c = a + b
+    const d = `<p>${c}</p>`
+    const testFor = document.querySelector('.test');
+    testFor.insertAdjacentHTML('beforeend', d);
+  });
 
   // Add our commands to annyang
-  annyang.addCommands(commandsOne);
-  annyang.addCommands(commandsTwo);
+  annyang.addCallback('result')
   annyang.setLanguage('fr-FR');
 
   // Start listening.
-  annyang.start({autoRestart: true});
+  annyang.start({autoRestart: true, continuous: true });
   annyang.debug([newState=true]);
 
 }
