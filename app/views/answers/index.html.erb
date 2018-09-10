@@ -1,0 +1,25 @@
+<h1>IA Mateo</h1>
+<p>Création part Mateo Ceron Arana</p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script>
+if (annyang) {
+  // Let's define a command.
+  var commandsOne = {
+    'Bonjour': function() { alert('Bonjour Mateo'); }
+  };
+
+  var commandsTwo = {
+
+  }
+
+  // Add our commands to annyang
+  annyang.addCommands(commandsOne);
+  annyang.addCommands(commandsTwo);
+  annyang.setLanguage('fr-FR');
+
+  // Start listening.
+  annyang.start({autoRestart: true});
+  annyang.debug([newState=true]);
+
+}
+</script>
