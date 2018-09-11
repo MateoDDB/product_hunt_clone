@@ -19,17 +19,26 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 <script>
 if (annyang) {
-    annyang.addCallback('result', function(phrases) {
-    const a = ("test1: ", phrases[0]);
-    const b = ("test2: ", phrases);
-    const c = a + b
-    const d = `<p>${c}</p>`
     const testFor = document.querySelector('.test');
-    testFor.insertAdjacentHTML('beforeend', d);
-  });
+    var commands = {
+        'Bonjour': function() {
+          testFor.insertAdjacentHTML('beforeend', '<p>bonjour ann ju</p>');
+        }
+      };
+
+      // Add our commands to annyang
+    // annyang.addCallback('result', function(phrases) {
+    // const a = ("test1: ", phrases[0]);
+    // const b = ("test2: ", phrases);
+    // const c = a + b
+    // const d = `<p>${c}</p>`
+    // const testFor = document.querySelector('.test');
+    // testFor.insertAdjacentHTML('beforeend', a);
+  //});
 
   // Add our commands to annyang
-  annyang.addCallback('result')
+  annyang.addCommands(commands);
+  // annyang.addCallback('result')
   annyang.setLanguage('fr-FR');
 
   // Start listening.
